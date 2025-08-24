@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="title">Nina PLUs PAint</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <!-- ...existing code... -->
+<img id="logo" src="logo.svg" alt="Nina PLUs PAint logo">
+<!-- ...existing code... -->
+    <span data-i18n="title">Nina PLUs PAint</span>
+  </div>
+
+  <div class="actions">
+    <button id="newCanvasBtn" data-i18n="new">Nowe</button>
+    <button id="openImageBtn" data-i18n="open">Otwórz</button>
+    <input type="file" id="openImageInput" accept="image/*" hidden>
+    <button id="savePngBtn" data-i18n="save">Zapisz PNG</button>
+    <button id="undoBtn" data-i18n="undo">↶ Cofnij</button>
+    <button id="redoBtn" data-i18n="redo">↷ Ponów</button>
+    <button id="clearBtn" data-i18n="clear">Wyczyść</button>
+  </div>
+</header>
+
+<section class="toolbar">
+  <button class="tool" data-tool="brush" data-i18n="tool_brush">Pędzel</button>
+  <button class="tool" data-tool="eraser" data-i18n="tool_eraser">Gumka</button>
+  <button class="tool" data-tool="line" data-i18n="tool_line">Linia</button>
+  <button class="tool" data-tool="rect" data-i18n="tool_rect">Prostokąt</button>
+  <button class="tool" data-tool="circle" data-i18n="tool_circle">Okrąg</button>
+  <button class="tool" data-tool="fill" data-i18n="tool_fill">Wypełnij</button>
+  <button class="tool" data-tool="text" data-i18n="tool_text">Tekst</button>
+  <button class="tool" data-tool="picker" data-i18n="tool_pipette">Pipeta</button>
+  <button class="tool" data-tool="spray" data-i18n="tool_spray">Spray</button>
+  <button class="tool" data-tool="rainbow" data-i18n="tool_rainbow">Tęcza</button>
+  <button class="tool" data-tool="randomShape" data-i18n="tool_randomShape">Losowy Kształt</button>
+  <button class="tool" data-tool="shuffle" data-i18n="tool_shuffle">Glitch</button>
+  <button class="tool" data-tool="meow">Meow</button>
+  <input type="color" id="colorPicker" value="#222222">
+  <input type="range" id="brushSize" min="1" max="50" value="14">
+</section>
+
+<main>
+  <canvas id="canvas" width="1200" height="700"></canvas>
+
+  <div class="mods-panel" id="modsPanel" aria-hidden="false">
+    <button id="modsToggle" class="mods-toggle" aria-label="Toggle mods panel" aria-pressed="true"></button>
+
+    <div class="mods-content" role="region" aria-label="Mods panel">
+      <h3 data-i18n="modloader_title">Catalog for Mods v1</h3>
+
+      <div class="modloader">
+        <label data-i18n="modloader_url_label">URL do moda (.js)</label><br>
+        <input type="text" id="mod-url" placeholder="https://example.com/mod.js" style="width:70%">
+        <button id="load-mod-btn" data-i18n="modloader_load_url">Załaduj z URL</button>
+
+        <div style="margin-top:8px;">
+          <label data-i18n="modloader_choose_file_label">Lub wybierz plik .js z dysku</label><br>
+          <input type="file" id="mod-file" accept=".js" style="display:none">
+          <button id="load-mod-file-btn" data-i18n="modloader_choose_file_btn">Wybierz plik (Explorer)</button>
+        </div>
+
+        <div id="mod-status" style="margin-top:8px;color:green;"></div>
+
+        <h4 data-i18n="modloader_loaded_mods" style="margin-top:12px;">Załadowane mody</h4>
+        <ul id="mods-list"></ul>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- ...existing code... -->
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="lang-select">
+  <select onchange="setLanguage(this.value)">
+    <option value="pl">Polski</option>
+    <option value="en">English</option>
+    <option value="ar">العربية</option>
+    <option value="ja">日本語</option>
+  </select>
+</div>
+
+<script src="lang.js"></script>
+<script src="paint.js"></script>
+<script src="modloader.js"></script>
+</body>
+</html>
